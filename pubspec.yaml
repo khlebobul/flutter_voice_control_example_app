@@ -17,3 +17,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/models/
+    - assets/models/sherpa-onnx-streaming-zipformer-en-kroko-2025-08-06/
