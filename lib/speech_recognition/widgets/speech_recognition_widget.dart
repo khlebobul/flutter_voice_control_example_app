@@ -51,6 +51,12 @@ class _SpeechRecognitionWidgetState extends State<SpeechRecognitionWidget> {
     }
   }
 
+  void _clearText() {
+    setState(() {
+      _text = '';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,18 +76,35 @@ class _SpeechRecognitionWidgetState extends State<SpeechRecognitionWidget> {
             ),
             Padding(
               padding: const EdgeInsets.all(16),
-              child: SizedBox(
-                width: double.infinity,
-                child: FilledButton.icon(
-                  onPressed: _toggle,
-                  icon: Icon(_isRecording ? Icons.stop : Icons.mic),
-                  label: Text(_isRecording ? 'Stop' : 'Record'),
-                  style: const ButtonStyle(
-                    padding: WidgetStatePropertyAll(
-                      EdgeInsets.symmetric(horizontal: 24, vertical: 18),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: FilledButton.icon(
+                      onPressed: _toggle,
+                      icon: Icon(_isRecording ? Icons.stop : Icons.mic),
+                      label: Text(_isRecording ? 'Stop' : 'Record'),
+                      style: const ButtonStyle(
+                        padding: WidgetStatePropertyAll(
+                          EdgeInsets.symmetric(horizontal: 24, vertical: 18),
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      onPressed: _text.isNotEmpty ? _clearText : null,
+                      icon: const Icon(Icons.clear),
+                      label: const Text('Clear'),
+                      style: const ButtonStyle(
+                        padding: WidgetStatePropertyAll(
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
