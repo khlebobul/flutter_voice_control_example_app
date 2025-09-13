@@ -16,6 +16,7 @@ dependencies:
   path: ^1.9.0
   record: ^6.1.1
   shared_preferences: ^2.5.3
+  confetti: ^0.8.0
 
 dev_dependencies:
   flutter_test:

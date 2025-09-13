@@ -1,3 +1,8 @@
-const List<String> screenshotCommands = <String>[
-  'one',
+const List<String> confettiCommands = <String>[
+  'confetti',
+  'celebration',
+  'party',
+  'congratulations',
+  'yay',
+  'flutter',
 ];

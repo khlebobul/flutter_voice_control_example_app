@@ -14,8 +14,7 @@ class VoiceCommandService {
   final List<String> _commandHistory = [];
   final Map<String, DateTime> _lastExecutionTimes = {};
   final Duration _debounceDelay = const Duration(seconds: 3);
-  String _lastProcessedText = '';
-  final Set<String> _processedTexts = {};
+  String _lastProcessedFullText = '';
 
   /// Registers a voice command with its corresponding action
   void registerCommand(String command, VoidCallback action) {
@@ -37,29 +36,15 @@ class VoiceCommandService {
 
   /// Processes recognized text and looks for commands
   void processRecognizedText(String text) {
-    if (text.isEmpty) return;
+    if (text.isEmpty || text == _lastProcessedFullText) return;
+    _lastProcessedFullText = text;
 
     final normalizedText = text.toLowerCase().trim();
-    final latestLine = normalizedText.split('\n').first.trim();
+    final latestLine = normalizedText.split('\n').last.trim();
 
-    if (_lastProcessedText == latestLine) {
-      return;
-    }
-
-    final textHash = latestLine.hashCode.toString();
-    if (_processedTexts.contains(textHash)) {
-      debugPrint('Text was already processed: "$latestLine"');
-      return;
-    }
+    if (latestLine.isEmpty) return;
 
     debugPrint('Processing recognized text: "$latestLine"');
-    _lastProcessedText = latestLine;
-    _processedTexts.add(textHash);
-
-    if (_processedTexts.length > 20) {
-      final oldestHashes = _processedTexts.take(_processedTexts.length - 20);
-      _processedTexts.removeAll(oldestHashes);
-    }
 
     _commandHistory.add(latestLine);
     if (_commandHistory.length > 50) {
@@ -140,9 +125,8 @@ class VoiceCommandService {
 
   /// Resets text processing state
   void resetProcessingState() {
-    _lastProcessedText = '';
+    _lastProcessedFullText = '';
     _lastExecutionTimes.clear();
-    _processedTexts.clear();
     debugPrint('Command processing state reset');
   }
 }

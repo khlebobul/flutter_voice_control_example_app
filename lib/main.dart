@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'speech_recognition/widgets/speech_recognition_widget.dart';
+import 'screens/speech_recognition_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,7 +12,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SpeechRecognitionWidget(),
+      home: SpeechRecognitionScreen(),
     );
   }
 }
