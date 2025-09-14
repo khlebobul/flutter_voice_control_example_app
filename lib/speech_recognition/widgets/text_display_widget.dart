@@ -20,4 +20,3 @@ class TextDisplayWidget extends StatelessWidget {
     );
   }
 }
-
