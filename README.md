@@ -4,10 +4,7 @@
 
 An application demonstrating local speech recognition and voice command control on Flutter using Sherpa-ONNX.
 
-<video controls width="600">
-  <source src="assets/demo_recordings/voice_control.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/0995d3d1-7cd4-4aed-98e4-e6d84795abcc
 
 </div>
 
