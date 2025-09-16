@@ -10,7 +10,7 @@ https://github.com/user-attachments/assets/0995d3d1-7cd4-4aed-98e4-e6d84795abcc
 
 ## How Speech Recognition Works
 
-// TODO Medium article link
+(ﾉ°∀°)ﾉ*:･ﾟ✧ [Medium article link](https://medium.com/@khlebobul/voice-control-in-flutter-how-to-add-local-speech-recognition-to-your-app-4bcd96bfd896)
 
 ### Initialization
 ```dart
